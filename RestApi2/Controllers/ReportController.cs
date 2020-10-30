@@ -13,9 +13,10 @@ namespace RestApi2.Controllers
     [ApiController]
     public class ReportController : ControllerBase
     {
+        private RestApiContext _restApiContext;
+
         public static Park park = new Park();
 
-        private RestApiContext _restApiContext;
 
         [HttpPost]
         public ActionResult Post([FromBody] Vehicle vehicle)
