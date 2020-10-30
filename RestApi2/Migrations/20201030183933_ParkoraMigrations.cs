@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RestApi2.Migrations
 {
-    public partial class Parkora : Migration
+    public partial class ParkoraMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,23 +80,24 @@ namespace RestApi2.Migrations
                     TimeIn = table.Column<DateTime>(nullable: false),
                     TimeOut = table.Column<DateTime>(nullable: false),
                     Cost = table.Column<double>(nullable: false),
-                    TicketOfVehicleId = table.Column<int>(nullable: false)
+                    VehicleId = table.Column<int>(nullable: false),
+                    SlotId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_Vehicles_TicketOfVehicleId",
-                        column: x => x.TicketOfVehicleId,
+                        name: "FK_Tickets_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_TicketOfVehicleId",
+                name: "IX_Tickets_VehicleId",
                 table: "Tickets",
-                column: "TicketOfVehicleId",
+                column: "VehicleId",
                 unique: true);
         }
 

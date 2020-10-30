@@ -22,12 +22,6 @@ namespace RestApi2
         
 
 
-        //public Vehicle(string plate, string type)
-        //{
-        //    this.plate = plate;
-        //    this.type = type;
-
-        //}
         public void CheckPlate() //Girilen plaka için kontrol yaptığımız metod.
         {
             //if (!textBox.MaskFull)
@@ -45,18 +39,7 @@ namespace RestApi2
             //}
             
         }
-        public class VehicleEntityConfiguration : IEntityTypeConfiguration<Vehicle>
-        {
-
-
-            public void Configure(EntityTypeBuilder<Vehicle> builder)
-            {
-                builder.HasOne<Ticket>(s => s.Ticket)
-               .WithOne(ad => ad.Vehicle)
-               .HasForeignKey<Ticket>(ad => ad.TicketOfVehicleId);
-
-            }
-        }
+       
     }
     
 }

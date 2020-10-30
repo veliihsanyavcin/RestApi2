@@ -10,8 +10,8 @@ using RestApi2.Data;
 namespace RestApi2.Migrations
 {
     [DbContext(typeof(RestApiContext))]
-    [Migration("20201023165236_Parkora")]
-    partial class Parkora
+    [Migration("20201030183933_ParkoraMigrations")]
+    partial class ParkoraMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,7 +85,7 @@ namespace RestApi2.Migrations
                     b.Property<double>("Cost")
                         .HasColumnType("float");
 
-                    b.Property<int>("TicketOfVehicleId")
+                    b.Property<int>("SlotId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TimeIn")
@@ -94,9 +94,12 @@ namespace RestApi2.Migrations
                     b.Property<DateTime>("TimeOut")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("TicketOfVehicleId")
+                    b.HasIndex("VehicleId")
                         .IsUnique();
 
                     b.ToTable("Tickets");
@@ -124,7 +127,7 @@ namespace RestApi2.Migrations
                 {
                     b.HasOne("RestApi2.Vehicle", "Vehicle")
                         .WithOne("Ticket")
-                        .HasForeignKey("RestApi2.Ticket", "TicketOfVehicleId")
+                        .HasForeignKey("RestApi2.Ticket", "VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

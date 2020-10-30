@@ -83,7 +83,7 @@ namespace RestApi2.Migrations
                     b.Property<double>("Cost")
                         .HasColumnType("float");
 
-                    b.Property<int>("TicketOfVehicleId")
+                    b.Property<int>("SlotId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TimeIn")
@@ -92,9 +92,12 @@ namespace RestApi2.Migrations
                     b.Property<DateTime>("TimeOut")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("TicketOfVehicleId")
+                    b.HasIndex("VehicleId")
                         .IsUnique();
 
                     b.ToTable("Tickets");
@@ -122,7 +125,7 @@ namespace RestApi2.Migrations
                 {
                     b.HasOne("RestApi2.Vehicle", "Vehicle")
                         .WithOne("Ticket")
-                        .HasForeignKey("RestApi2.Ticket", "TicketOfVehicleId")
+                        .HasForeignKey("RestApi2.Ticket", "VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

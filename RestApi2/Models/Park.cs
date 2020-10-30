@@ -29,7 +29,6 @@ namespace RestApi2
             MotorbikeSlot = new Slot(50, new List<Recipe> { new Recipe(3, 0), new Recipe(1500, 15) });
         }
 
-
         public void ParkIn(Vehicle vehicle, RestApiContext _restApiContext) //Parka giriş için kullnılan metod.
         {
 
@@ -63,80 +62,34 @@ namespace RestApi2
             return ticketList;
         }
 
-
-        public void ParkOut(Vehicle vehicle)//Parktan çıkış için kullnılan metod.
+        public void ParkOut(Vehicle vehicle, RestApiContext _restApiContext)//Parktan çıkış için kullnılan metod.
         {
             switch (vehicle.type)
             {
                 case "Truck":
-                   TrackSlot.SlotOut(vehicle.plate);
+                   TrackSlot.SlotOut(vehicle.plate, _restApiContext);
                     break;
                 case "Bus":
-                    BusSlot.SlotOut(vehicle.plate);
+                    BusSlot.SlotOut(vehicle.plate, _restApiContext);
                     break;
                 case "Car":
-                    CarSlot.SlotOut(vehicle.plate);
+                    CarSlot.SlotOut(vehicle.plate, _restApiContext);
                     break;
                 case "Motorbike":
-                    MotorbikeSlot.SlotOut(vehicle.plate);
+                    MotorbikeSlot.SlotOut(vehicle.plate, _restApiContext);
                     break;
             }
 
         }
-        public List<Ticket> GetParkOut()
+        public List<Ticket> GetParkOut(RestApiContext _restApiContext)
         {
             var ticketList = new List<Ticket>();
-            ticketList.AddRange(TrackSlot.GetSlotOut());
-            ticketList.AddRange(BusSlot.GetSlotOut());
-            ticketList.AddRange(CarSlot.GetSlotOut());
-            ticketList.AddRange(MotorbikeSlot.GetSlotOut());
+            ticketList.AddRange(TrackSlot.GetSlotOut(_restApiContext));
+            ticketList.AddRange(BusSlot.GetSlotOut(_restApiContext));
+            ticketList.AddRange(CarSlot.GetSlotOut(_restApiContext));
+            ticketList.AddRange(MotorbikeSlot.GetSlotOut(_restApiContext));
             return ticketList;
         }
-
-
-
-        //public void ParkIn(Vehicle vehicle) //Parka giriş için kullnılan metod.
-        //{
-
-        //    //Vehicle newVehicle = new Vehicle(vehicle.plate,vehicle.type);
-        //    vehicle.CheckPlate();
-
-
-
-        //    switch (vehicle.type)
-        //    {
-        //        case "Truck":
-        //            ticketList = ticketList.Concat(this.TrackSlot.SlotIn(vehicle)).ToList();
-        //            break;
-        //        case "Bus":
-        //            ticketList = ticketList.Concat(this.BusSlot.SlotIn(vehicle)).ToList();
-        //            break;
-
-        //        case "Car":
-        //            ticketList = ticketList.Concat(this.CarSlot.SlotIn(vehicle)).ToList();
-        //            break;
-
-        //        case "Motorbike":
-        //            ticketList = ticketList.Concat(this.MotorbikeSlot.SlotIn(vehicle)).ToList();
-        //            break;
-
-        //    }
-
-
-        //}
-
-        //public List<Ticket> GetParkIn()
-        //{
-
-        //    ticketList.AddRange(TrackSlot.GetSlotIn());
-        //    ticketList.AddRange(BusSlot.GetSlotIn());
-        //    ticketList.AddRange(CarSlot.GetSlotIn());
-        //    ticketList.AddRange(MotorbikeSlot.GetSlotIn());
-        //    return ticketList;
-        //}
-
-
-
     }
 }
 

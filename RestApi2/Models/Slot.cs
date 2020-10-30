@@ -44,15 +44,15 @@ namespace RestApi2
             _restApiContext.Tickets.Add(ticket);
             _restApiContext.SaveChanges();
 
-            if (!IsEmpty(_restApiContext))
-            {
-                throw new Exception("Otopark Dolu!");
-            }
+            //if (!IsEmpty(_restApiContext))
+            //{
+            //    throw new Exception("Otopark Dolu!");
+            //}
 
-            if (IsAlreadyIn(vehicle.plate, _restApiContext))
-            {
-                throw new Exception("Araç İçerde");
-            }
+            //if (IsAlreadyIn(vehicle.plate, _restApiContext))
+            //{
+            //    throw new Exception("Araç İçerde");
+            //}
 
         }
 
@@ -60,12 +60,12 @@ namespace RestApi2
         public List<Ticket> GetSlotIn(RestApiContext _restApiContext) 
         {
             ///return TicketList.FindAll(x => x.TimeOut == DateTime.MinValue);
-           
-           return _restApiContext.Tickets.Where(x => x.TimeOut == DateTime.MinValue).ToList();
+            var list = _restApiContext.Tickets.Include(t => t.Vehicle).ToList();           
+            return _restApiContext.Tickets.Where(x => x.TimeOut == DateTime.MinValue && x.SlotId == Id).ToList();
 
         }
 
-        public void SlotOut(string plate)
+        public void SlotOut(string plate, RestApiContext _restApiContext)
         {
             int index = TicketList.FindIndex(x => x.Vehicle.plate == plate);
             if(index != -1)
@@ -80,8 +80,10 @@ namespace RestApi2
         }
         // Çıkış yapan araçların listesinin tutulduğu metod.
        
-        public List<Ticket> GetSlotOut() 
+        public List<Ticket> GetSlotOut(RestApiContext _restApiContext) 
         {
+            var list = _restApiContext.Tickets.Include(t => t.Vehicle).ToList();
+
             return TicketList.FindAll(x => x.TimeOut != DateTime.MinValue);
            
             

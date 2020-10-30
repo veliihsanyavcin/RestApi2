@@ -21,30 +21,21 @@ namespace RestApi2
         public DateTime TimeOut { get; set; } //Çıkış zamanı için kullanılır.
 
         public double Cost { get; set; }
-        public int TicketOfVehicleId { get; set; }
+        public int VehicleId { get; set; }
 
+        public int SlotId { get; set; }
 
         public Ticket()
         {
 
         }
+
         public Ticket(Vehicle vehicle, DateTime TimeIn)
         {
             this.Vehicle = vehicle;
             this.TimeIn = TimeIn;
         }
-        public class TicketEntityConfiguration : IEntityTypeConfiguration<Ticket>
-        {
-            public void Configure(EntityTypeBuilder<Ticket> builder)
-            {
-
-                builder.HasOne<Vehicle>(s => s.Vehicle)
-                 .WithOne(ad => ad.Ticket)
-                 .HasForeignKey<Ticket>(ad => ad.TicketOfVehicleId);
-
-
-            }
-        }
+       
 
     }
 }
