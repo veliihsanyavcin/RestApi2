@@ -37,16 +37,30 @@ namespace RestApi2.Controllers
            
             park.ParkIn(vehicle, _restApiContext);
             return Ok();
-
         }
 
         [HttpGet]
         public IEnumerable<Ticket> Get()
         {
-
             return park.GetParkIn(_restApiContext);
-
         }
+
+        [HttpPost]
+        public ActionResult Post([FromBody] Ticket ticket)
+        {
+            if (ticket.Id==1)
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+
 
     }
 }
