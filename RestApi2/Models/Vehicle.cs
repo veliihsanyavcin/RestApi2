@@ -22,6 +22,12 @@ namespace RestApi2
         
 
 
+        //public Vehicle(string plate, string type)
+        //{
+        //    this.plate = plate;
+        //    this.type = type;
+
+        //}
         public void CheckPlate() //Girilen plaka için kontrol yaptığımız metod.
         {
             //if (!textBox.MaskFull)

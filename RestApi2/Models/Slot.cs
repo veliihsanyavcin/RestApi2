@@ -67,6 +67,7 @@ namespace RestApi2
 
         public void SlotOut(string plate, RestApiContext _restApiContext)
         {
+           
             int index = TicketList.FindIndex(x => x.Vehicle.plate == plate);
             if(index != -1)
             {
@@ -74,7 +75,9 @@ namespace RestApi2
                 double cost = CalcPayment(TicketList[index]);
                 TicketList[index].Cost = cost;
             }
-            
+            _restApiContext.Tickets.Add(TicketList[index]);
+            _restApiContext.SaveChanges();
+
             //MessageBox.Show("Tutar:" + cost.ToString(), "Ücretiniz");
             //return TicketList;
         }

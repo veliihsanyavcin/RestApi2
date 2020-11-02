@@ -36,7 +36,6 @@ namespace RestApi2.Controllers
             }
            
             park.ParkIn(vehicle, _restApiContext);
-
             return Ok();
 
         }

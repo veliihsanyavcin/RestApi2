@@ -1,7 +1,7 @@
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Xunit.Sdk;
 
-namespace UnitTestProject4
+namespace UnitTestProject
 {
     [TestClass]
     public class UnitTest1

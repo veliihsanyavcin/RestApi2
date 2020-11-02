@@ -30,7 +30,9 @@ namespace RestApi2
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<RestApiContext>(opt => opt.UseSqlServer(connectionString));
-           
+            services.AddControllers().AddNewtonsoftJson(options =>
+           options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+       );
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()

@@ -22,7 +22,9 @@ namespace RestApi2.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
        
-     
+       
+
+
     }
    
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RestApi2.Data;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RestApi2.Controllers
 {
@@ -13,10 +14,9 @@ namespace RestApi2.Controllers
     [ApiController]
     public class ReportController : ControllerBase
     {
-        private RestApiContext _restApiContext;
-
         public static Park park = new Park();
 
+        private RestApiContext _restApiContext;
 
         [HttpPost]
         public ActionResult Post([FromBody] Vehicle vehicle)
@@ -26,6 +26,7 @@ namespace RestApi2.Controllers
 
         }
 
+
         [HttpGet]
         public IEnumerable<Ticket> Get()
         {
@@ -33,5 +34,38 @@ namespace RestApi2.Controllers
             return park.GetParkOut(_restApiContext);
 
         }
+
+
+
+
+        // GET: /report
+        //[HttpGet]
+        //public IEnumerable<Ticket> Get(Ticket ticket)
+        //{
+        //    return park.GetParkOut();
+        //}
+
+        // GET: api/<ReportController>
+
+        // GET api/<ReportController>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
+
+        // POST api/<ReportController>
+
+        // PUT api/<ReportController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        // DELETE api/<ReportController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

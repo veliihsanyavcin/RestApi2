@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RestApi2.Migrations
 {
-    public partial class ParkoraMigrations : Migration
+    public partial class Parkora : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

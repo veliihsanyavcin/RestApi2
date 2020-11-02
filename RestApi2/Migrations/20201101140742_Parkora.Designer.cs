@@ -10,8 +10,8 @@ using RestApi2.Data;
 namespace RestApi2.Migrations
 {
     [DbContext(typeof(RestApiContext))]
-    [Migration("20201030183933_ParkoraMigrations")]
-    partial class ParkoraMigrations
+    [Migration("20201101140742_Parkora")]
+    partial class Parkora
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

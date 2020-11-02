@@ -29,13 +29,12 @@ namespace RestApi2
         {
 
         }
-
         public Ticket(Vehicle vehicle, DateTime TimeIn)
         {
             this.Vehicle = vehicle;
             this.TimeIn = TimeIn;
         }
-       
+        
 
     }
 }
